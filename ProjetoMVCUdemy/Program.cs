@@ -1,4 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using ProjetoMVCUdemy.Data;
+using System.Configuration;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<ProjetoMVCUdemyContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("ProjetoMVCUdemyContext"),
+    new MySqlServerVersion(new Version(8, 0, 21))));
+//options.UseMySql(builder.Configuration.GetConnectionString("ProjetoMVCUdemyContext"), builder.MigrationAssembly("ProjetoMVCUdemy")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
