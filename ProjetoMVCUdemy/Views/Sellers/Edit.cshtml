@@ -1,0 +1,43 @@
+﻿@model ProjetoMVCUdemy.Models.ViewModels.SellerFormViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>Seller</h3>
+<hr />
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Seller.Id" />
+            <div class="form-label">
+                <label asp-for="Seller.Nome" class="form-control-plaintext"></label>
+                <input asp-for="Seller.Nome" class="form-control" />
+            </div>
+            <div class="form-label">
+                <label asp-for="Seller.Email" class="form-control-plaintext"></label>
+                <input asp-for="Seller.Email" class="form-control" />
+            </div>
+            <div class="form-label">
+                <label asp-for="Seller.DataNascimento" class="form-control-plaintext"></label>
+                <input asp-for="Seller.DataNascimento" class="form-control" />
+            </div>
+            <div class="form-label">
+                <label asp-for="Seller.SalarioBase" class="form-control-plaintext"></label>
+                <input asp-for="Seller.SalarioBase" class="form-control" />
+            </div>
+            <div class="form-label">
+                <label asp-for="Seller.DepartmentId" class="form-control-plaintext"></label>
+                <select asp-for="Seller.DepartmentId"
+                        asp-items="@(new SelectList(Model.Departments, "Id", "Nome"))" class="form-control">
+                </select>
+            </div>
+            <div class="form-label">
+                <div class="form-label">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+        </form>
+    </div>
+
+</div>
