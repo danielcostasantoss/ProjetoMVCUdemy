@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ProjetoMVCUdemy.Data;
+using ProjetoMVCUdemy.Services;
 using System.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ProjetoMVCUdemyContext>(options =>
@@ -8,8 +9,9 @@ builder.Services.AddDbContext<ProjetoMVCUdemyContext>(options =>
     new MySqlServerVersion(new Version(8, 0, 21))));
 
 // Add services to the container.
-builder.Services.AddScoped<SeedingService>();
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<SeedingService>();
+builder.Services.AddScoped<SellerService>();
 
 var app = builder.Build();
 
