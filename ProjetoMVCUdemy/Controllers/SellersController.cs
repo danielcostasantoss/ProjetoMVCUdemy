@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using ProjetoMVCUdemy.Models;
 using ProjetoMVCUdemy.Models.ViewModels;
 using ProjetoMVCUdemy.Services;
@@ -58,6 +59,23 @@ namespace ProjetoMVCUdemy.Controllers
         {
             _sellerService.Remove(id);
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var seller = _sellerService.FindById(id.Value);
+            if (seller == null)
+            {
+                {
+                    return NotFound();
+                }
+            }
+            return View(seller);
         }
     }
 }
