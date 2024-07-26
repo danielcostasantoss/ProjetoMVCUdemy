@@ -1,0 +1,35 @@
+﻿@model ProjetoMVCUdemy.Models.Seller
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h3>Seller</h3>
+<hr />
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="Create">
+            <div class="form-label">
+                <label asp-for="Nome" class="form-control-plaintext"></label>
+                <input asp-for="Nome" class="form-control" />
+            </div>
+            <div class="form-label">
+                <label asp-for="Email" class="form-control-plaintext"></label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+            <div class="form-label">
+                <label asp-for="DataNascimento" class="form-control-plaintext"></label>
+                <input asp-for="DataNascimento" class="form-control" />
+            </div>
+            <div class="form-label">
+                <label asp-for="SalarioBase" class="form-control-plaintext"></label>
+                <input asp-for="SalarioBase" class="form-control" />
+            </div>
+            <div class="form-label">
+                <input type="submit" value="create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+</div>
