@@ -1,4 +1,5 @@
-﻿using ProjetoMVCUdemy.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjetoMVCUdemy.Data;
 using ProjetoMVCUdemy.Models;
 
 namespace ProjetoMVCUdemy.Services
@@ -12,9 +13,9 @@ namespace ProjetoMVCUdemy.Services
             _context = context;
         }
 
-        public List<Department> FindAll()
+        public async Task<List<Department>> FindAllAsync()
         {
-            return _context.Department.OrderBy(x => x.Nome).ToList();
+            return await _context.Department.OrderBy(x => x.Nome).ToListAsync();
         }
     }
 }

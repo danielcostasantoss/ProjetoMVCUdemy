@@ -33,6 +33,8 @@ namespace ProjetoMVCUdemy.Models
         public Department Department { get; set; }
 
         [Display(Name = "Departamento")]
+        [Required(ErrorMessage = "o {0} é obrigatório.")]
+
         public int DepartmentId { get; set; }
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 

@@ -36,6 +36,7 @@
                 <select asp-for="Seller.DepartmentId" 
                     asp-items="@(new SelectList(Model.Departments, "Id", "Nome"))" class="form-control">
                 </select>
+                <span asp-validation-for="Seller.DepartmentId" class="text-danger"></span>
             </div>
             <div class="form-label">
             <div class="form-label">
