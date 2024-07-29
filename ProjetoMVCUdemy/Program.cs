@@ -1,8 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using ProjetoMVCUdemy.Data;
 using ProjetoMVCUdemy.Services;
-using System.Configuration;
+using System.Globalization;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ProjetoMVCUdemyContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("ProjetoMVCUdemyContext"),
@@ -19,6 +18,14 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 using (var scope = app.Services.CreateScope())
 {
+    var enUs = new CultureInfo("en-US");
+    var localizationOptions = new RequestLocalizationOptions
+    {
+        DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en-US"),
+        SupportedCultures = new List<CultureInfo> { enUs },
+        SupportedUICultures = new List<CultureInfo> { enUs }
+    };
+    app.UseRequestLocalization(localizationOptions);
     var seedingService = scope.ServiceProvider.GetRequiredService<SeedingService>();
 
     // Configura o pipeline de requisição HTTP.
