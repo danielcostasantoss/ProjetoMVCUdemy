@@ -7,22 +7,31 @@ namespace ProjetoMVCUdemy.Models
         public int Id { get; set; }
 
         [Display (Name  = "Nome")]
+        [Required(ErrorMessage = "o {0} é necessário.")]
+        [StringLength (100, MinimumLength = 3, ErrorMessage = "Tamanho do {0} tem que ser entre {2} e {1} caracteres.")]
         public string Nome { get; set; }
 
         [Display(Name  = "E-Mail")]
         [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "Insira um e-mail válido")]
+        [Required(ErrorMessage = "o {0} é necessário.")]
+        [StringLength(200, MinimumLength = 3, ErrorMessage = "Tamanho do {0} tem que ser entre {2} e {1} caracteres.")]
         public string Email { get; set; }
 
         [Display(Name = "Data de Nascimento")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DataNascimento { get; set; }
+        [Required(ErrorMessage = "o {0} é necessário.")]
+        public DateTime? DataNascimento { get; set; }
 
         [Display(Name = "Salário Base")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
+        [Range(100.0, 50000.0, ErrorMessage = "{0} deve ser de {1} a {2}")]
+        [Required(ErrorMessage = "o {0} é necessário.")]
         public double SalarioBase { get; set; }
 
         public Department Department { get; set; }
+
         [Display(Name = "Departamento")]
         public int DepartmentId { get; set; }
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
