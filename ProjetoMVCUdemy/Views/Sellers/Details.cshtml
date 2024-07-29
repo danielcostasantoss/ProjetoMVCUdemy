@@ -1,4 +1,4 @@
-﻿@model ProjetoMVCUdemy.Models.Seller  
+﻿@model ProjetoMVCUdemy.Models.Seller
 @{
     ViewData["Title"] = "Details";
 }
@@ -7,39 +7,60 @@
 
 <div>
     <h4>Seller</h4>
-    <hr/>
+    <hr />
     <dl class="d-lg-flex">
         <dt>
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
+    </dl>
+    <dl class="d-lg-flex">
         <dd>
             @Html.DisplayFor(model => model.Nome)
         </dd>
+    </dl>
+    <dl class="d-lg-flex">
         <dt>
             @Html.DisplayNameFor(model => model.Email)
         </dt>
+    </dl>
+    <dl class="d-lg-flex">
         <dd>
             @Html.DisplayFor(model => model.Email)
         </dd>
+    </dl>
+    <dl class="d-lg-flex">
         <dt>
             @Html.DisplayNameFor(model => model.DataNascimento)
         </dt>
+    </dl>
+    <dl class="d-lg-flex">
         <dd>
             @Html.DisplayFor(model => model.DataNascimento)
         </dd>
+    </dl>
+    <dl class="d-lg-flex">
         <dt>
             @Html.DisplayNameFor(model => model.SalarioBase)
         </dt>
+    </dl>
+    <dl class="d-lg-flex">
         <dd>
             @Html.DisplayFor(model => model.SalarioBase)
         </dd>
+    </dl>
+    <dl class="d-lg-flex">
         <dt>
             @Html.DisplayNameFor(model => model.Department)
         </dt>
+    </dl>
+    <dl class="d-lg-flex">
         <dd>
             @Html.DisplayFor(model => model.Department.Nome)
         </dd>
     </dl>
+
+
+
 </div>
 <div>
     <a asp-action="Edit" class="btn btn-primary">Edit</a>
