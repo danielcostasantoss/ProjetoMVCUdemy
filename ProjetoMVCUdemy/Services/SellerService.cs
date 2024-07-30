@@ -32,16 +32,20 @@ namespace ProjetoMVCUdemy.Services
 
         public async Task RemoveAsync(int id)
         {
-            try
+            var seller = await _context.Seller.Include(s => s.Sales).FirstOrDefaultAsync(s => s.Id == id);
+
+            if (seller == null)
             {
-                var obj = await _context.Seller.FindAsync(id);
-                _context.Seller.Remove(obj);
-                await _context.SaveChangesAsync();
+                throw new NotFoundException("Seller not found");
             }
-            catch (DbUpdateException e)
+
+            if (seller.Sales.Any())
             {
-                throw new IntegrityException(e.Message);
+                throw new IntegrityException("Can't delete seller because they have sales");
             }
+
+            _context.Seller.Remove(seller);
+            await _context.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(Seller obj)
